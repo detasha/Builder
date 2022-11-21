@@ -1,10 +1,12 @@
 package org.example;
 
+import java.util.OptionalInt;
+
 public class PersonBuilder {
     private String name;
     private String surname;
     private int age = -1;
-    private String city;
+    private String address;
 
     public PersonBuilder setName(String name) throws IllegalArgumentException {
         if (name == null || name.isEmpty()) {
@@ -22,13 +24,16 @@ public class PersonBuilder {
 
     public PersonBuilder setAge(int age) throws IllegalArgumentException {
         if (age < 0) {
-            throw new IllegalArgumentException("Ошибка!Возраст не может быть отрицательным");
-        } else this.age = age;
+            throw new IllegalArgumentException("Ошибка!Возраст не может быть отрицательным!");
+        } else {
+            this.age = age;
+        }
         return this;
+
     }
 
-    public PersonBuilder setAddress(String city) {
-        this.city = city;
+    public PersonBuilder setAddress(String address) {
+        this.address = address;
         return this;
     }
 
@@ -39,7 +44,7 @@ public class PersonBuilder {
         if (age < 0) {
             person = new Person(name, surname);
         } else person = new Person(name, surname, age);
-        person.setAddress(city);
+        person.setAddress(address);
         return person;
     }
 

@@ -6,8 +6,9 @@ import java.util.OptionalInt;
 public class Person {
     protected final String name;
     protected final String surname;
-    protected int age;
-    protected String city;
+    private int age;
+    protected String address;
+
 
     public Person(String name, String surname) {
         this.name = name;
@@ -21,11 +22,19 @@ public class Person {
     }
 
     public boolean hasAge() {
-        return age >= 0;
+        if (age > 0) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public boolean hasAddress() {
-        return city != null;
+        if (address == null || address.isEmpty()) {
+            return false;
+        } else {
+            return true;
+        }
     }
 
     public String getName() {
@@ -37,39 +46,54 @@ public class Person {
     }
 
     public OptionalInt getAge() {
-        return OptionalInt.of(age);
+        return hasAge() ? OptionalInt.of(age) : OptionalInt.empty();
     }
 
     public String getAddress() {
-        return city;
+        return address;
     }
 
-    public String setAddress(String city) {
-        this.city = city;
-        return this.city;
+    public String setAddress(String address) {
+        this.address = address;
+        return this.address;
     }
 
-    public void happyBirthday() {
-        if (hasAge()) age++;
+    public int happyBirthday() {
+        return age++;
     }
 
     @Override
     public String toString() {
-        return "Person{" +
-                "name ='" + name + '\'' +
-                ", surname ='" + surname + '\'' +
-                ", age =" + age +
-                ", city ='" + city + '\'' +
-                '}';
+        StringBuilder x = new StringBuilder();
+        x.append(getName())
+                .append(" ")
+                .append(getSurname());
+        if (hasAddress())
+            x.append(" из ")
+                    .append(getAddress());
+        if (hasAge())
+            x.append(" ")
+                    .append(getAge().getAsInt())
+                    .append(" лет");
+
+        return x.toString();
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, surname);
+        return Objects.hash(name, surname, age, address);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Person person = (Person) o;
+        return age == person.age && name.equals(person.name) && surname.equals(person.surname) && address.equals(person.address);
     }
 
     public PersonBuilder newChildBuilder() {
-        return new PersonBuilder().setSurname(surname).setAddress(city);
+        return new PersonBuilder().setSurname(surname).setAddress(address);
     }
 
 }
