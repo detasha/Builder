@@ -46,7 +46,7 @@ public class Person {
     }
 
     public OptionalInt getAge() {
-        return hasAge() ? OptionalInt.of(age) : OptionalInt.empty();
+        return OptionalInt.of(age);
     }
 
     public String getAddress() {
@@ -59,24 +59,17 @@ public class Person {
     }
 
     public int happyBirthday() {
-        return age++;
+       return age++;
     }
 
     @Override
     public String toString() {
-        StringBuilder x = new StringBuilder();
-        x.append(getName())
-                .append(" ")
-                .append(getSurname());
-        if (hasAddress())
-            x.append(" из ")
-                    .append(getAddress());
-        if (hasAge())
-            x.append(" ")
-                    .append(getAge().getAsInt())
-                    .append(" лет");
-
-        return x.toString();
+       return "Person{" +
+                "name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                ", age=" + age +
+                ", address='" + address + '\'' +
+                '}';
     }
 
     @Override

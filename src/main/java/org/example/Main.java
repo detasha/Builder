@@ -17,8 +17,9 @@ public class Main {
         System.out.println("У " + mom + " есть сын, " + son);
         System.out.println(son.hasAge());
 
+
         Person pap = new PersonBuilder()
-                .setName("Анна")
+                .setName("Рудольф")
                 .setSurname("Вольф")
                 .setAge(31)
                 .build();
