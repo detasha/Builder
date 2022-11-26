@@ -6,7 +6,7 @@ import java.util.OptionalInt;
 public class Person {
     protected final String name;
     protected final String surname;
-    private int age;
+    protected int age = -1;
     protected String address;
 
 
@@ -22,7 +22,7 @@ public class Person {
     }
 
     public boolean hasAge() {
-        if (age > 0) {
+        if (age != -1) {
             return true;
         } else {
             return false;
@@ -58,13 +58,21 @@ public class Person {
         return this.address;
     }
 
-    public int happyBirthday() {
-       return age++;
+    protected void setAge(int age) throws IllegalArgumentException {
+        if (this.age == -1) {
+            this.age = age;
+        } else {
+            throw new IllegalArgumentException("Возраст уже был задан");
+        }
+    }
+
+    public void happyBirthday() {
+        age += 1;
     }
 
     @Override
     public String toString() {
-       return "Person{" +
+        return "Person{" +
                 "name='" + name + '\'' +
                 ", surname='" + surname + '\'' +
                 ", age=" + age +
@@ -86,7 +94,7 @@ public class Person {
     }
 
     public PersonBuilder newChildBuilder() {
-        return new PersonBuilder().setSurname(surname).setAddress(address);
+        return new PersonBuilder().setSurname(surname).setAge(0).setAddress(address);
     }
 
 }

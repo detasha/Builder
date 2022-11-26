@@ -22,15 +22,13 @@ public class PersonBuilder {
         return this;
     }
 
-    public PersonBuilder setAge(int age) throws IllegalArgumentException {
-        if (age < 0) {
-            throw new IllegalArgumentException("Ошибка!Возраст не может быть отрицательным!");
-        } else {
-            this.age = age;
-        }
-        return this;
-
+    public PersonBuilder setAge(int age){
+        if (age < 0 || age >100)
+            throw new IllegalArgumentException("Неправильно указан возраст.Возраст должен быть больше 0 и меньше 100.");
+    this.age = age;
+    return this;
     }
+
 
     public PersonBuilder setAddress(String address) {
         this.address = address;

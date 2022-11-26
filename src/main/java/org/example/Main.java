@@ -8,26 +8,47 @@ public class Main {
                 .setAge(31)
                 .setAddress("Сидней")
                 .build();
-        System.out.println(mom.hasAge());
-        System.out.println(mom.hasAddress());
+        System.out.println("Есть ли у мамы возраст - " + mom.hasAge());
+        System.out.println("Есть ли у мамы адрес - " + mom.hasAddress());
+        mom.setAddress("Москва");
+        System.out.println("Новый адрес мамы = " + mom.address);
+
+        System.out.println(mom.getAddress());
+        System.out.println(mom.getName());
+        System.out.println(mom.getSurname());
+        System.out.println(mom.getAge().getAsInt());
+
 
         Person son = mom.newChildBuilder()
                 .setName("Антошка")
                 .build();
         System.out.println("У " + mom + " есть сын, " + son);
-        System.out.println(son.hasAge());
+        System.out.println("Есть ли у сына возраст - " + son.hasAge());
 
+        mom.happyBirthday();
+        System.out.println("Маме исполнилось: " + mom.age +" года");
 
         Person pap = new PersonBuilder()
                 .setName("Рудольф")
                 .setSurname("Вольф")
                 .setAge(31)
                 .build();
-        System.out.println(pap.hasAddress());
-        mom.address = "Moscow";
-        System.out.println("New address = " + mom.address);
-        mom.happyBirthday();
-        System.out.println(mom.happyBirthday());
+        System.out.println("Есть ли у папы адрес - " + pap.hasAddress());
+        pap.setAddress("Санкт-Петербург");
+        System.out.println("Новый адрес папы = " + pap.address);
+
+        Person ded = new PersonBuilder()
+                .setName("Иван")
+                .setSurname("Вольф")
+                .setAge(90)
+                .setAddress("деревня Васькино")
+                .build();
+        System.out.println(ded);
+        System.out.println("Есть ли у деда возраст - " + ded.hasAge());
+        ded.setAddress("Вологда");
+        System.out.println("Новый адрес деда = " + ded.address);
+
+       //mom.setAge(50);
 
 
         try {
