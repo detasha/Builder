@@ -11,7 +11,6 @@ public class Main {
         System.out.println("Есть ли у мамы возраст - " + mom.hasAge());
         System.out.println("Есть ли у мамы адрес - " + mom.hasAddress());
         mom.setAddress("Москва");
-        System.out.println("Новый адрес мамы = " + mom.address);
 
         System.out.println(mom.getAddress());
         System.out.println(mom.getName());
@@ -26,7 +25,7 @@ public class Main {
         System.out.println("Есть ли у сына возраст - " + son.hasAge());
 
         mom.happyBirthday();
-        System.out.println("Маме исполнилось: " + mom.age +" года");
+
 
         Person pap = new PersonBuilder()
                 .setName("Рудольф")
@@ -34,8 +33,10 @@ public class Main {
                 .setAge(31)
                 .build();
         System.out.println("Есть ли у папы адрес - " + pap.hasAddress());
-        pap.setAddress("Санкт-Петербург");
-        System.out.println("Новый адрес папы = " + pap.address);
+        System.out.println(pap.setAddress("Санкт-Петербург"));
+        System.out.println(pap.setAddress("Москва"));
+
+
 
         Person ded = new PersonBuilder()
                 .setName("Иван")
@@ -46,7 +47,7 @@ public class Main {
         System.out.println(ded);
         System.out.println("Есть ли у деда возраст - " + ded.hasAge());
         ded.setAddress("Вологда");
-        System.out.println("Новый адрес деда = " + ded.address);
+
 
        //mom.setAge(50);
 

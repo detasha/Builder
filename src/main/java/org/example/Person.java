@@ -6,8 +6,8 @@ import java.util.OptionalInt;
 public class Person {
     protected final String name;
     protected final String surname;
-    protected int age = -1;
-    protected String address;
+    private int age = -1;
+    private String address;
 
 
     public Person(String name, String surname) {
